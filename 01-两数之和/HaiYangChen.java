@@ -20,7 +20,6 @@ public class Question20190507 {
         Map<Integer, Integer> arrayMap = new HashMap<>(array.length);
         for (int i = 0; i < array.length; i++) {
 
-
             int value = target - array[i];
             if (arrayMap.containsKey(value)) {
                 return new int[]{i, arrayMap.get(value)};

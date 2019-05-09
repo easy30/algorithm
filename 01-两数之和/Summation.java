@@ -18,7 +18,7 @@ public class Summation {
                     Integer two = target - num[i];
                     Integer j = map.get(two);
                     if (j != null) {
-                        result = j + "," + i;
+                        result = "[" + j + "," + i + "]";
                     }
                     map.put(num[i], i);
                 }

@@ -11,7 +11,7 @@ date:2019-05-08
 '''
 def findNumbers(nums, target):
     # 新建立一个空字典用来保存数值及其在列表中对应的索引
-    dictTemp = {}
+    dictTemp  = {}
     for i in range(0, len(nums)):
         subNumber = target - nums[i]
         # 如果另一个数值不在字典中，则将第一个数值及其的索引保存在字典中
@@ -21,7 +21,7 @@ def findNumbers(nums, target):
             return [dictTemp[subNumber],i]
 
 if __name__ == '__main__':
-    nums = [2,7,11,15]
+    nums = [9,-1,6,2,8,11,15,13,7]
     target = 9
     result = findNumbers(nums, target)
     for i in result:

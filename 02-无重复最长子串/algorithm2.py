@@ -36,7 +36,7 @@ def lengthOfLongestSubstring(s):
         if s[i] in str_dict and str_dict[s[i]] >= start:
             # 记录当前字符的值+1
             start = str_dict[s[i]] + 1
-            # print start
+            # print(start)
         # 在此次循环中，最大的不重复子串的长度
         one_max = i - start + 1
         # 把当前位置覆盖字典中的位置

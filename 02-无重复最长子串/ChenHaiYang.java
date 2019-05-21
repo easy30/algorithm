@@ -6,6 +6,8 @@ public class Question20190514 {
 		System.out.println(getNoRepeatSubStringMaxLength("abcabcbb"));
 		System.out.println(getNoRepeatSubStringMaxLength("bbbbb"));
 		System.out.println(getNoRepeatSubStringMaxLength("pwwkew"));
+		System.out.println(getNoRepeatSubStringMaxLength("pwkeZwycndyu"));
+
 	}
 
 	private static int getNoRepeatSubStringMaxLength(String string) {
@@ -18,14 +20,12 @@ public class Question20190514 {
 		int startIndex = 0;
 		int endIndex = 0;
 
-		final char[] chars = string.toCharArray();
-
-		for (char currentChar : chars) {
+		for (int i = 0; i < string.length(); i++) {
 			if ((endIndex - startIndex) > maxNotRepeatLength) {
 				maxNotRepeatLength = endIndex - startIndex;
 			}
 
-			if (arrayContains(chars, startIndex, endIndex, currentChar)) {
+			if (contains(string, startIndex, endIndex, string.charAt(i))) {
 				startIndex++;
 			} else {
 				endIndex++;
@@ -37,13 +37,13 @@ public class Question20190514 {
 
 	}
 
-	private static boolean arrayContains(char[] chars, int start, int end, char aChar) {
+	private static boolean contains(String string, int start, int end, char aChar) {
 		if (start == end) {
 			return false;
 		}
 
 		for (int i = start; i < end; i++) {
-			if (chars[i] == aChar) {
+			if (string.charAt(i) == aChar) {
 				return true;
 			}
 		}

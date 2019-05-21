@@ -5,6 +5,7 @@ public class Question20190514 {
 	public static void main(String[] args) {
 		System.out.println(getNoRepeatSubStringMaxLength("abcabcbb"));
 		System.out.println(getNoRepeatSubStringMaxLength("bbbbb"));
+		System.out.println(getNoRepeatSubStringMaxLength("abcbbcdefcg"));
 		System.out.println(getNoRepeatSubStringMaxLength("pwwkew"));
 		System.out.println(getNoRepeatSubStringMaxLength("pwkeZwycndyu"));
 
@@ -20,7 +21,7 @@ public class Question20190514 {
 		int startIndex = 0;
 		int endIndex = 0;
 
-		for (int i = 0; i < string.length(); i++) {
+		for (int i = 0; i < string.length(); ) {
 			if ((endIndex - startIndex) > maxNotRepeatLength) {
 				maxNotRepeatLength = endIndex - startIndex;
 			}
@@ -29,6 +30,7 @@ public class Question20190514 {
 				startIndex++;
 			} else {
 				endIndex++;
+				i++;
 			}
 
 		}

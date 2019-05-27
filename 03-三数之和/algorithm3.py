@@ -37,9 +37,9 @@ def findThreetuple(list):
                 if list[start] + list[end] == -list[i]:
                     # 把结果加入数组中
                     res_list.append([list[i], list[start], list[end]])
-                    # 判断j相邻元素是否相等，有的话跳过这个
+                    # 判断start相邻元素是否相等，有的话跳过这个
                     while start < end and list[start] == list[start + 1]: start += 1
-                    # 判断后面k的相邻元素是否相等，是的话跳过
+                    # 判断后面end的相邻元素是否相等，是的话跳过
                     while start < end and list[end] == list[end - 1]: end -= 1
                     # 没有相等则start+1，end-1，缩小范围
                     start += 1

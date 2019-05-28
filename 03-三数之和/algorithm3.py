@@ -56,4 +56,6 @@ def findThreetuple(list):
 
 if __name__ == '__main__':
     list =[1,2,3,4,6,8,-1,0,9,-7]
+    # list=[-1, 0, 1, -1 , 2, -1, -4 , 2, 0 , 0 ,0 , 0 ,-1]
+    list = [-4, -3, -2, -1, 0, 1, 2, 3, 4]
     print(findThreetuple(list))

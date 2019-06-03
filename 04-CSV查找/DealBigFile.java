@@ -133,8 +133,8 @@ public class DealBigFile {
         Table table=new Table();
         String path="E:\\tiejia_space\\study\\src\\main\\resources\\equipment.csv";
         String targetDirectoryPath="E:\\tiejia_space\\study\\src\\main\\resources\\";
-//        int count=DealBigFile.splitFileByLine(path,targetDirectoryPath,100000);
-        String[][] result=DealBigFile.find(targetDirectoryPath,"equipment","\"price\"","\"380000\"",10);
+        int count=DealBigFile.splitFileByLine(path,targetDirectoryPath,100000);
+        String[][] result=DealBigFile.find(targetDirectoryPath,"equipment","\"price\"","\"380000\"",count);
         System.out.println(result.length);
     }
 }

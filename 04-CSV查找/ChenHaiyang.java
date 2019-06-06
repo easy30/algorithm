@@ -63,8 +63,9 @@ interface CvsReader {
 
 class CvsReaderImpl implements CvsReader {
 
-    public static final int NOT_EXISTS = -1;
-    String[] columnTiles = null;
+    private static final int NOT_EXISTS = -1;
+    
+    String[] columnTitles = null;
     String[][] content = new String[][]{};
 
     @Override
@@ -88,7 +89,7 @@ class CvsReaderImpl implements CvsReader {
     }
 
     private void initColumnTitle(String line) {
-        columnTiles = split(line);
+        columnTitles = split(line);
     }
 
     private String[] split(String line) {
@@ -131,14 +132,13 @@ class CvsReaderImpl implements CvsReader {
     }
 
     private int getIndex(String fieldName) {
-        int columnIndex = NOT_EXISTS;
-        for (int i = 0; i < columnTiles.length; i++) {
-            if (columnTiles[i].equals(fieldName)) {
-                columnIndex = i;
-                break;
+        for (int i = 0; i < columnTitles.length; i++) {
+            if (columnTitles[i].equals(fieldName)) {
+                return i;
             }
         }
-        return columnIndex;
+
+        return NOT_EXISTS;
     }
 
     private boolean isEmpty(String fieldName) {

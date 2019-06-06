@@ -18,7 +18,7 @@ public class ChenHaiyang {
 
     public static void main(String[] args) throws IOException {
 
-        CvsReader cvsReader = new CVSReaderImpl();
+        CvsReader cvsReader = new CvsReaderImpl();
         cvsReader.load("H:\\IdeaProjects\\algorithm\\04-CSV查找\\sample.csv");
         print(cvsReader.find("distinct_id", "000A1968-0B49-4094-9F0B-5001EDCB5342"));
         System.out.println("****************");
@@ -61,7 +61,7 @@ interface CvsReader {
     String[][] find(String fieldName, String fieldValue);
 }
 
-class CVSReaderImpl implements CvsReader {
+class CvsReaderImpl implements CvsReader {
 
     public static final int NOT_EXISTS = -1;
     String[] columnTiles = null;

@@ -1,0 +1,14 @@
+/**
+ * 
+ * 实现一个csv文件简单操作类，实现两个方法:
+ * load() - 加载数据，请不要用第三方csv解析类
+ * find() - 按照字段名=字段值 条件查询并返回结果集。
+ * 内存不限，要求find方法尽量快。
+ *
+ */
+public interface Table {
+    public void load(String path);
+
+    public  String[][] find(String fieldName,String fieldValue);
+
+}

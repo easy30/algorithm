@@ -170,16 +170,16 @@ class BlockingQueue<T> implements Queue<T>{
     private CycleQueue<T> q;
     final ReentrantLock lock;
     /** Condition for waiting takes */
-    private final Condition notEmpty;
+    private final Condition removeCondition;
 
     /** Condition for waiting puts */
-    private final Condition notFull;
+    private final Condition insertCondition;
 
     public BlockingQueue(int maxSize){
         lock = new ReentrantLock(true);
         q=new CycleQueue(maxSize);
-        notEmpty = lock.newCondition();
-        notFull =  lock.newCondition();
+        removeCondition = lock.newCondition();
+        insertCondition =  lock.newCondition();
     }
 
     @Override
@@ -189,9 +189,9 @@ class BlockingQueue<T> implements Queue<T>{
         lock.lockInterruptibly();
         try {
             while (q.isFull())
-                notFull.await();
+                insertCondition.await();
             boolean b=q.insert(value);
-            notEmpty.signal();
+            removeCondition.signal();
             return b;
         } finally {
             lock.unlock();
@@ -209,9 +209,9 @@ class BlockingQueue<T> implements Queue<T>{
             lock.lockInterruptibly();
             try {
                 while (q.isEmpty())
-                    notEmpty.await();
+                    removeCondition.await();
                 T t= q.remove();
-                notFull.signal();
+                insertCondition.signal();
                 return t;
             } finally {
                 lock.unlock();
